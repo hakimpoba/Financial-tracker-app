@@ -65,7 +65,7 @@ const app = new Hono()
         accountId ? eq(transactions.accountId, accountId) : undefined,
         eq(accounts.userId, auth.userId),
         gte(transactions.date, startDate),
-        lte(transactions.date, startDate),
+        lte(transactions.date, endDate),
     )
 )
 .orderBy(desc(transactions.date));
@@ -203,8 +203,7 @@ const app = new Hono()
         .with(transactionsToDelete)
         .delete(transactions)
         .where(
-            inArray(transactions.id, sql`(select id from $
-                {transactionsToDelete})`)
+            inArray(transactions.id, sql`(select id from ${transactionsToDelete})`)
         )
         .returning({
             id: transactions.id,
@@ -258,8 +257,7 @@ const app = new Hono()
             .update(transactions)
             .set(values)
             .where(
-                inArray(transactions.id, sql`(select id from $
-                    {transactionsToUpdate})`)
+                inArray(transactions.id, sql`(select id from ${transactionsToUpdate})`)
             )
             .returning();
             
