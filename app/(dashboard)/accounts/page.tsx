@@ -34,7 +34,7 @@ import { useBulkDeleteAccounts } from "@/features/accounts/api/use-bulk-delete-a
 // }
 
 
-
+export const dynamic = "force-dynamic";
 const AccountsPage = () => {
     const newAccount = useNewAccount();
     const deleteAccounts = useBulkDeleteAccounts();

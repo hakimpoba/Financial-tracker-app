@@ -21,7 +21,7 @@ import { ImportCard } from "./import-card";
 import { useSelectAccount } from "@/features/accounts/hooks/use-select-account";
 import { toast } from "sonner";
 import { useBulkCreateTransactions } from "@/features/transactions/api/use-bulk-create-transactions";
-
+export const dynamic = "force-dynamic";
 enum VARIANTS {
     LIST = "LIST",
     IMPORT = "IMPORT"

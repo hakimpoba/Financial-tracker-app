@@ -18,7 +18,7 @@ type Props = {
 
 export const Actions = ({ id }: Props) => {
 
-    const [] = useConfirm(
+    const [ConfirmDialog, confirm] = useConfirm(
         "Are you sure ?",
         "You are about to delete this transaction."
     )
@@ -36,6 +36,7 @@ export const Actions = ({ id }: Props) => {
 
     return(
         <>
+        <ConfirmDialog />
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="size-8 p-0">
